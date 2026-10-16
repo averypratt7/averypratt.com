@@ -1,0 +1,112 @@
+:root{
+  --black:#000;
+  --white:#fff;
+  --shadow-light:rgba(255,255,255,.28); /* drop shadow cast onto black */
+  --shadow-dark:rgba(0,0,0,.35);        /* drop shadow cast onto white */
+  --halftone:radial-gradient(rgba(255,255,255,.12) 1px,transparent 1.4px) 0 0/6px 6px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:60px}
+body{
+  margin:0;color:var(--black);background:var(--black);
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:1.05rem;font-weight:700;line-height:1.6;
+}
+h1,h2{font-weight:400;margin:0 0 .5em;line-height:1.15}
+h2{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:700;font-size:1.65rem;letter-spacing:-.01em}
+p{margin:0 0 1em;max-width:62ch}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--white);outline-offset:3px}
+.paper :focus-visible,.clipping:focus-visible,.banner :focus-visible{outline-color:var(--black)}
+
+/* Navigation */
+.strips{
+  position:sticky;top:0;z-index:10;display:flex;flex-wrap:wrap;justify-content:center;gap:.2rem 1.8rem;
+  padding:.8rem 1rem;background:var(--black);border-bottom:1px solid var(--white);
+}
+.strips a{font-size:1.1rem;text-decoration:none;color:var(--white);padding:.1rem 0;border-bottom:1px solid transparent}
+.strips a:hover{border-bottom-color:var(--white)}
+
+/* Hero */
+.hero{max-width:900px;margin:0 auto;padding:3rem 1.2rem .4rem}
+.banner{background:var(--white);padding:1.6rem 2rem 1.8rem;box-shadow:10px 10px 0 var(--shadow-light)}
+.banner h1{
+  font-family:"UnifrakturMaguntia","UnifrakturCook",serif;font-weight:400;
+  font-size:clamp(2rem,6.3vw,3.9rem);margin:0;text-align:center;
+  border-bottom:3px double var(--black);padding-bottom:.25em;
+  animation:settle .6s ease-out both;
+}
+.tagline{font-size:1.15rem;letter-spacing:.03em;text-align:center;margin:1.1rem auto 0;max-width:none}
+.blurb-body{display:grid;grid-template-columns:1fr minmax(220px,320px);gap:2rem;align-items:start}
+.portrait{margin:0;background:var(--white);padding:.35rem;border:1px solid var(--black);box-shadow:6px 6px 0 var(--shadow-dark)}
+.portrait img{display:block;width:100%;height:auto;filter:grayscale(1) contrast(1.05)}
+
+/* Blurb: inverted (white text on black) */
+.paper.blurb{background:var(--halftone),var(--black);color:var(--white);border:2px solid var(--white)}
+.blurb .portrait{background:var(--black);border:1px solid var(--white);box-shadow:6px 6px 0 var(--shadow-light)}
+@keyframes settle{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:none}}
+
+main{max-width:820px;margin:0 auto;padding:.8rem 1.2rem 3.5rem;display:flex;flex-direction:column;gap:2.6rem}
+
+/* White paper blocks and black panels */
+.paper{background:var(--white);padding:2rem 2.2rem 2.2rem;box-shadow:10px 10px 0 var(--shadow-light)}
+.panel{
+  background:var(--halftone),var(--black);color:var(--white);
+  border:2px solid var(--white);padding:2rem 2.2rem;box-shadow:10px 10px 0 var(--shadow-light);
+}
+
+/* In the Media: the gothic heading returns here */
+.section-title{
+  font-family:"UnifrakturMaguntia","UnifrakturCook",serif;font-weight:400;font-size:2.8rem;
+  display:inline-block;color:var(--white);padding:0 .2rem .15rem;margin-bottom:1.4rem;border-bottom:3px double var(--white);
+}
+
+/* Clippings */
+.clippings{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2.2rem}
+.clipping{
+  display:flex;flex-direction:column;gap:.5rem;text-decoration:none;
+  background:var(--white);padding:1.5rem 1.4rem 1.6rem;box-shadow:8px 8px 0 var(--shadow-light);
+  transition:transform .15s,box-shadow .15s;
+}
+.clipping:hover{transform:translate(-2px,-2px);box-shadow:12px 12px 0 var(--shadow-light)}
+.clipping img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;margin-bottom:.5rem;border:1px solid var(--black);filter:grayscale(1) contrast(1.05)}
+.clipping .source{font-size:.85rem;border-bottom:1px solid var(--black);padding-bottom:.35rem}
+.clipping .headline{font-family:"Cormorant Garamond",Georgia,serif;font-size:1.7rem;font-weight:700;line-height:1.15}
+.clipping .note{font-size:.95rem}
+
+.footnote{font-size:.85rem;margin:1.8rem 0 0;padding-top:.8rem;border-top:1px solid var(--black)}
+.footnote a{text-underline-offset:3px}
+
+/* Buttons */
+.button{
+  display:inline-block;font-family:inherit;font-weight:700;font-size:1rem;text-decoration:none;cursor:pointer;
+  background:var(--white);color:var(--black);border:2px solid var(--white);padding:.45rem 1.4rem;
+  box-shadow:4px 4px 0 var(--shadow-light);transition:transform .12s,box-shadow .12s;
+}
+.button:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--shadow-light)}
+.paper .button{background:var(--black);color:var(--white);border-color:var(--black);box-shadow:4px 4px 0 var(--shadow-dark)}
+.paper .button:hover{box-shadow:6px 6px 0 var(--shadow-dark)}
+
+/* Form */
+form{display:flex;flex-direction:column;gap:.3rem;max-width:560px}
+label{margin-top:.7rem}
+input,textarea{font:inherit;color:var(--black);background:var(--white);border:2px solid var(--black);padding:.55rem .7rem;width:100%}
+textarea{resize:vertical}
+form .button{align-self:flex-start;margin-top:1.2rem}
+
+footer{text-align:center;padding:1.5rem 1rem 3rem;font-size:.9rem;background:var(--black);color:var(--white);border-top:1px solid var(--white)}
+footer p{margin:0 auto}
+
+@media (max-width:700px){
+  .blurb-body{grid-template-columns:1fr}
+  .portrait{max-width:360px}
+}
+@media (max-width:640px){
+  body{font-size:1rem}
+  .banner{padding:1.4rem 1rem 1.6rem}
+  .paper,.panel{padding:1.5rem 1.3rem}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .banner h1{animation:none}
+  .button,.clipping{transition:none}
+}
